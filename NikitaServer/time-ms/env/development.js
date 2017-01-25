@@ -1,0 +1,4 @@
+module.exports = {
+  GEOENCODING_API_TOKEN: "AIzaSyAjaLUKx3vh8qt7ZnCGItP6037Cyt4r-HU",
+  TIMEZONE_API_TOKEN: "AIzaSyBzEwJ8kN4YeAPKDDhH68fsKqSeZaez14A"
+};

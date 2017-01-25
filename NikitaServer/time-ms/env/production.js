@@ -1,0 +1,4 @@
+module.exports = {
+  GEOENCODING_API_TOKEN: process.env.GEOENCODING_API_TOKEN,
+  TIMEZONE_API_TOKEN: process.env.TIMEZONE_API_TOKEN
+};
