@@ -9,10 +9,10 @@ module.exports.process = function process(intentData, registry, cb) {
     if (!intentData.location) {
         return cb(new Error('Missing location in time intent'))
     }
-    // return cb(false, `I don't yet know the time in ${intentData.intent[0].value}`)
-    const location = intentData.location[0].value.replace(/,.?awesom-o/i,'');
-
+    const location = intentData.location[0].value.replace(/,.?Nikita/i,'');
+    console.log(registry.get('time'))
     const service = registry.get('time');
+
     if(!service) return cb(false, 'No service available'); 
 
     request.get(`http://${service.ip}:${service.port}/service/${location}`,(err,res) => {

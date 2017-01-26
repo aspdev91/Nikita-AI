@@ -4,7 +4,7 @@ class ServiceRegistry {
 
     constructor() {
         this._services = [];
-        this._timeout = 30;
+        this._timeout = 120;
     }
 
     add(intent, ip, port) {
@@ -34,6 +34,7 @@ class ServiceRegistry {
 
     get(intent) {
         this._cleanup();
+        console.log(this._services)
         for(let key in this._services) {
             if(this._services[key].intent == intent) return this._services[key];
         }
@@ -42,7 +43,6 @@ class ServiceRegistry {
 
     _cleanup() {
         const now = Math.floor(new Date() / 1000);
-        
         for(let key in this._services) {
             if(this._services[key].timestamp + this._timeout < now) {
                 console.log(`Removed service for intent ${this._services[key].intent}`);
