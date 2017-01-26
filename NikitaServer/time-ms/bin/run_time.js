@@ -7,13 +7,13 @@ const server = http.createServer(service);
 server.listen();
 
 server.on('listening', function() {
-    console.log(`Awesomo-Time is listening on ${server.address().port} in ${service.get('env')} mode.`);
+    console.log(`Nikita-Time is listening on ${server.address().port} in ${service.get('env')} mode.`);
 
     const announce = () => {
         request.put(`http://127.0.0.1:3000/service/time/${server.address().port}`, (err,res) => {
             if(err){
                 console.log(err);
-                console.log("Error connecting to Awesom-o");
+                console.log("Error connecting to Nikita");
                 return;
             }
             console.log(res.body);
