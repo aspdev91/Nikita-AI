@@ -1,2 +1,8 @@
 /node_modules
+/time-ms/env/development.js
+/weather-ms/env/development.js
+/news-ms/env/development.js
+/time-ms/node_modules
+/weather-ms/node_modules
+/news-ms/node_modules
 .git
