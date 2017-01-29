@@ -11,7 +11,7 @@ module.exports.process = function process(intentData, registry, cb) {
     
     const location = intentData.location[0].value.replace(/,.?nikita/i, '');
 
-    const service = registry.get('weather');
+    const service = registry.get('weather')
     if(!service) return cb(false, 'No service available');
 
     request.get(`http://${service.ip}:${service.port}/service/${location}`, (err, res) => {
