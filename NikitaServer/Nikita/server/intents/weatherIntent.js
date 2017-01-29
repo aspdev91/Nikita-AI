@@ -9,7 +9,7 @@ module.exports.process = function process(intentData, registry, cb) {
 
     if(!intentData.location) return cb(new Error('Missing location in weather intent'));
     
-    const location = intentData.location[0].value.replace(/,.?iris/i, '');
+    const location = intentData.location[0].value.replace(/,.?nikita/i, '');
 
     const service = registry.get('weather');
     if(!service) return cb(false, 'No service available');
