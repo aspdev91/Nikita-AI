@@ -20,7 +20,7 @@ service.put('/service/:intent/:port', (req, res, next) => {
 })
 
 service.get('/nikita', (req, res, next) => {
-    let query = res.query.command
+    let query = req.query.command
     let result = nikitaClient.handleOnMessage(query, serviceRegistry, (error, response) => {
         if (error) {
             console.log(error)
