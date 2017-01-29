@@ -3,7 +3,7 @@
 const express = require('express');
 const service = express();
 const request = require('superagent');
-const WEATHER_API_TOKEN = require('../env').WEATHER_API_TOKEN
+const WEATHER_API_TOKEN = require('../env')
 
 service.get('/service/:location', (req, res, next) => {
     
