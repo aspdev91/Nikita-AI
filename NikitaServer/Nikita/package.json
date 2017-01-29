@@ -1,0 +1,20 @@
+{
+  "name": "nikita",
+  "version": "1.0.0",
+  "main": "server/service.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "morgan": "^1.7.0",
+    "superagent": "^3.3.2",
+    "winston": "^2.3.1"
+  },
+  "bin": {
+    "nikita": "run.js"
+  },
+  "description": ""
+}
