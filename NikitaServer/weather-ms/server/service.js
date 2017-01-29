@@ -3,12 +3,12 @@
 const express = require('express');
 const service = express();
 const request = require('superagent');
-const WEATHER_API_TOKEN = require('../env').WEATHER_API_TOKEN
+const weather_api_token = require('../env').WEATHER_API_TOKEN
 
 service.get('/service/:location', (req, res, next) => {
     
     request.get('http://api.openweathermap.org/data/2.5/weather?q=' + 
-    req.params.location + `&APPID=${WEATHER_API_TOKEN}&units=imperial`, 
+    req.params.location + '&APPID=' + weather_api_token + '&units=imperial', 
     (err, response) => {
 
         if (err) {
