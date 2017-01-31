@@ -1,8 +1,10 @@
 /node_modules
-/time-ms/env/development.js
-/weather-ms/env/development.js
-/news-ms/env/development.js
-/time-ms/node_modules
-/weather-ms/node_modules
-/news-ms/node_modules
+/NikitaServer/time-ms/env/development.js
+/NikitaServer/weather-ms/env/development.js
+/NikitaServer/news-ms/env/development.js
+/NikitaServer/time-ms/node_modules
+/NikitaServer/weather-ms/node_modules
+/NikitaServer/news-ms/node_modules
+/NikitaServer/Nikita/newrelic.js
+/NikitaServer/Nikita/node_modules
 .git
