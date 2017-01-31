@@ -10,7 +10,6 @@ module.exports.process = function (intentData, registry, cb) {
         return cb(new Error('Missing news source in time intent'))
     }
     const news_source = intentData.local_search_query[0].value.replace(/,.?nikita/i, '');
-    console.log(registry.get('news'))
     const service = registry.get('news');
 
     if (!service) return cb(false, 'No service available');
@@ -19,8 +18,7 @@ module.exports.process = function (intentData, registry, cb) {
             console.log(err);
             return cb(false, `I had a problem finding out the news at ${news_source}`)
         }
-        console.log(res)
         return cb(false, res.body.result)
     })
-    
+
 }

@@ -1,5 +1,5 @@
 'use strict';
-
+require('newrelic');
 const service = require('../server/service');
 const logger = require('../logger')
 
