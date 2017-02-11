@@ -1,7 +1,7 @@
 app.LoadScript('Nikita.js');
 app.LoadScript('Songs.js');
 
-function EmotionAnalysis(){
+function emotionAnalysis(){
 	speech.SetOnResult( speech_OnResultExpress )
 	app.TextToSpeech( 'Tell me what happened.' , 1, 1, Listen )				
 }

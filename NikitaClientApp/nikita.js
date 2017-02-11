@@ -2,18 +2,19 @@
 //Load required scripts.
 app.LoadScript( "Colors.js" );
 app.LoadPlugin( "GalleryPick" );
-app.LoadScript( "Quotes.js" );
-app.LoadScript( "Songs.js" );
-app.LoadScript( "MTA.js" );
-app.LoadScript( "News.js" );
-app.LoadScript( "HeartRate.js" );
-app.LoadScript( "Emotions.js");
-app.LoadScript( "Weather.js" );
-app.LoadScript( "Maps.js" );
-app.LoadScript( "Uber.js" );
-app.LoadScript( "FaceRec.js");
-app.LoadScript( "FacialEmotionRec.js");
-app.LoadScript( "FaceIdentityRec.js");
+app.LoadScript( "quotes.js" );
+app.LoadScript( "songs.js" );
+app.LoadScript( "mta.js" );
+app.LoadScript( "news.js" );
+app.LoadScript( "heart_rate.js" );
+app.LoadScript( "emotions.js");
+// app.LoadScript( "weather.js" );
+app.LoadScript( "maps.js" );
+// app.LoadScript( "uber.js" );
+// app.LoadScript( "face_identity_rec.js");
+// app.LoadScript( "facial_emotion_rec.js");
+app.LoadScript( "hand_gesture_recognition.js");
+// app.LoadScript( "FaceIdentityRec.js");
 
 
 //Init some global variables.
@@ -217,12 +218,13 @@ function speech_OnResult( results, partial )
             return;
         }
         //Check for motion commands.
+        else if( cmd.includes("go this") || cmd.includes("way") || cmd.includes("direction")) { app.TextToSpeech("Alright, I'll make an emergency call right away",1,1,callEmergency)}
         else if( cmd.includes("emergency") || cmd.includes("police") || cmd.includes("ambulance")) { app.TextToSpeech("Alright, I'll make an emergency call right away",1,1,callEmergency)}
-        else if( cmd.includes("get to") || cmd.includes("go to") || cmd.includes("travel to")){ retrieveAddress(cmd) }
+        else if( cmd.includes("get to") || cmd.includes("go to") || cmd.includes("travel to")){ recognizeHandGesture() }
         else if( cmd.includes("who are you") || cmd.includes("what's your name")) { app.TextToSpeech("I'm Nikita, Michael's personal AI",1,1)}
         else if( cmd.includes("weather") ) { retrieveWeather(cmd);}
         else if( cmd.includes("stop playing")) { player.Stop(); }
-        else if( cmd.includes("listen up") || cmd.includes("feel me") || cmd.includes("funeral")|| cmd.includes("mia") || cmd.includes("mio")  || cmd.includes("fuel") || cmd.includes("listen to me") ) { EmotionAnalysis() }
+        else if( cmd.includes("listen up") || cmd.includes("feel me") || cmd.includes("funeral")|| cmd.includes("mia") || cmd.includes("mio")  || cmd.includes("fuel") || cmd.includes("listen to me") ) { emotionAnalysis() }
         else if( cmd.includes("heart") || cmd.includes("park") || cmd.includes("hard rate") ) { retrieveHeartStatus() }
         else if( cmd.includes("wall-e stop talking") ) { speech.Cancel(); }
         else if( cmd.includes("get the news at") || cmd.includes("what's happening on ") || cmd.includes("tell me the news at") || cmd.includes("the news at") || cmd.includes("what's going on at")){ retrieveNews(cmd);}

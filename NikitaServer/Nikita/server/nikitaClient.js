@@ -17,7 +17,7 @@ function handleOnMessage(message, registry, cb) {
                 }
                 console.log('the intent is ', res.intent);
                 const intent = require('./intents/' + res.intent[0].value.trim() + 'intent');
-
+                
                 intent.process(res, registry, function (error, response) {
                     if (error) {
                         console.log(error.message);
