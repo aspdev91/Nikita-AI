@@ -87,10 +87,13 @@ function speech_OnResultEmotion(results, partial){
 		let cmd = results[0].toLowerCase();
 		console.log( cmd );
 		if(cmd.includes("angr")){ retrieveSong("angrier")}
-		else if(cmd.includes("music")){ retrieveSong(emoResponse)}
+		else if(cmd.includes("music")){ 
+			retrieveSong(emoResponse); 
+		}
 		else if(cmd.includes("cops") || cmd.includes("ambulance") || cmd.includes("doctor")) { makeCall('911') }
 		else if(cmd.includes("food")){ orderFood(cmd) }
 		else if(cmd.includes("motivation")){ retrieveQuote('inspire me') };
+		
 	} 
 }
 

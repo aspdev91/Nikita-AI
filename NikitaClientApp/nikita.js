@@ -12,7 +12,7 @@ app.LoadScript( "emotions.js");
 app.LoadScript( "maps.js" );
 // app.LoadScript( "uber.js" );
 // app.LoadScript( "face_identity_rec.js");
-// app.LoadScript( "facial_emotion_rec.js");
+app.LoadScript( "face_emotion_rec.js");
 app.LoadScript( "hand_gesture_recognition.js");
 // app.LoadScript( "FaceIdentityRec.js");
 
@@ -107,7 +107,7 @@ function OnButton()
     if( name=="Del" ) Delete();
     else if( name=="Clr" ) Clear();
     else if( name=="Voice" ) Voice();
-    else if( name=="Face" ) EmotionRecog();
+    else if( name=="Face" ) faceEmotionRecog();
     else if( isNum ) AddValue( name );
     else AddCommand( name );
 }

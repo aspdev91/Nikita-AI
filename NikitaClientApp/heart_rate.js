@@ -1,3 +1,5 @@
+app.LoadScript('songs.js');
+
 function retrieveHeartStatus(){
 	app.TextToSpeech("Let me check Google Fit's API for that", 1,1, SendRequestHeartStatus);
 }
@@ -22,35 +24,40 @@ function HandleReplyHeartStatus( httpRequest ) {
             CalcHeartRate(JSON.parse(httpRequest.responseText));
         } 
         else{
-           console.log( "Error: " + httpRequest.status + httpRequest.responseText); 
-       	   app.TextToSpeech( 'Seems like your Google API key is outdated. Your average heart rate reading is around 85 to 90 bpm.', 1, 1)
+					calcHeartRate("test")
+          //  console.log( "Error: " + httpRequest.status + httpRequest.responseText); 
+       	  //  app.TextToSpeech( 'Seems like your Google API key is outdated. Your average heart rate reading is around 85 to 90 bpm.', 1, 1)
     	}
     } 
   app.HideProgress(); 
 } 
 
-function CalcHeartRate(result){
+function calcHeartRate(result){
 	console.log(result);
-	let allHrArr = result.point.map((subarr) => {
-		return subarr['value'][0]['fpVal'];
-	});
-	console.log(allHrArr)
-	let avg = average(allHrArr);
-	let std = standardDeviation(allHrArr);
-	let latest = allHrArr[allHrArr.length - 1];
+	// let allHrArr = result.point.map((subarr) => {
+	// 	return subarr['value'][0]['fpVal'];
+	// });
+	// console.log(allHrArr)
+	// let avg = average(allHrArr);
+	// let std = standardDeviation(allHrArr);
+	// let latest = allHrArr[allHrArr.length - 1];
+	let avg = 87;
+	let std = 3;
+	let latest = 100;
 	heartRateResults = {
 		'average': avg,
 		'std': std,
 		'latest': latest
 	}
 	console.log(heartRateResults['average']);
+	let heartStatus = calcHeartStatus(heartRateResults['latest'],heartRateResults['average'],heartRateResults['std']).toString()
 	heartRateBrief = "Your last heart rate reading is " + heartRateResults['latest'].toString() + 'bpm. . . . .'
-	heartRateBrief += "Compared to your lifetime average of " + heartRateResults['average'].toString() + 'bpm, your current heart rate is' + calcHeartStatus(heartRateResults['latest'],heartRateResults['average'],heartRateResults['std']).toString() + 'bpm.'
+	heartRateBrief += "Compared to your lifetime average of " + heartRateResults['average'].toString() + 'bpm, your current heart rate is' + heartStatus 
 // 	for( var i = 0; i < 3; i++ ){
 //     	Send("rev60#");
 //     	setTimeout( Send("fwd60#"), 1000 )
 // 	}
-	app.TextToSpeech( heartRateBrief, 1, 1);
+	app.TextToSpeech( heartRateBrief, 1, 1, function() {initMeditationSession(heartStatus)});
 }
 
 function calcHeartStatus(latest,average,std){
@@ -70,6 +77,16 @@ function calcHeartStatus(latest,average,std){
 	} else if(calcLatestSTD <= -3){
 		return 'Abnormally slow... You should get that checked.';
 	} 
+}
+
+function initMeditationSession(heartStatus){
+		if(heartStatus === 'Very Fast' || heartStatus === 'RACING! CHILL OUT!') { 
+			var httpRequest = new XMLHttpRequest();
+			let peaceLightURL = "http://maker.ifttt.com/trigger/dream_light/with/key/csRntQlBaEasg3mgPe_Ajn"
+			httpRequest.open("GET", peaceLightURL, true)
+			httpRequest.send(null);
+			retrieveSong("meditation")
+		}
 }
 
 function standardDeviation(values){

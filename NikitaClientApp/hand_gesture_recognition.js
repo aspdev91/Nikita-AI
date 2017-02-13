@@ -21,7 +21,7 @@ function processHandGesture(cmd) {
 
 function sendRequestHandGesture() {
     var httpRequest = new XMLHttpRequest();
-    let url = 'https://api.projectoxford.ai/face/v1.0/detect'
+    let url = 'http://72.226.12.17:4000/'
     httpRequest.onreadystatechange = function () { handleReplyHandGesture(httpRequest); };
     httpRequest.open("POST", url, true);
     httpRequest.setRequestHeader("Content-Type",
@@ -50,6 +50,6 @@ function handGestureRecEngine(result) {
     if (result.direction === "left") {
         VoiceCommand( "lft100#", 3000, "Turning left" )
     } else {
-        VoiceCommand( "rev100#", 3000, "Turning right" )
+        VoiceCommand( "rgt100#", 3000, "Turning right" )
     }
 }
