@@ -1,11 +1,4 @@
-/node_modules
-/NikitaServer/time-ms/env/development.js
-/NikitaServer/weather-ms/env/development.js
-/NikitaServer/news-ms/env/development.js
-/NikitaServer/time-ms/node_modules
-/NikitaServer/weather-ms/node_modules
-/NikitaServer/news-ms/node_modules
-/NikitaServer/Nikita/newrelic.js
-/NikitaServer/Nikita/node_modules
+*development.js*
+*node_modules*
 .git
-NikitaClientApp
+*NikitaClientApp*
