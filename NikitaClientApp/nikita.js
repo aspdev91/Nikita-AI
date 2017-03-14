@@ -13,7 +13,7 @@ app.LoadScript( "maps.js" );
 // app.LoadScript( "uber.js" );
 // app.LoadScript( "face_identity_rec.js");
 app.LoadScript( "face_emotion_rec.js");
-app.LoadScript( "hand_gesture_recognition.js");
+app.LoadScript( "hand_gesture_detection.js");
 // app.LoadScript( "FaceIdentityRec.js");
 
 
@@ -51,7 +51,7 @@ function OnStart()
 
     //Create special buttons.
     laySpec = app.CreateLayout( "Linear", "Horizontal" );
-    CreateButtons( laySpec, ["Buz","Del","Clr","Voice","Face"], "#424242" );
+    CreateButtons( laySpec, ["Buz","Del","Clr","Voice","Face","Hand"], "#424242" );
     lay.AddChild( laySpec );
     
     
@@ -108,6 +108,7 @@ function OnButton()
     else if( name=="Clr" ) Clear();
     else if( name=="Voice" ) Voice();
     else if( name=="Face" ) faceEmotionRecog();
+    else if( name == "Hand" ) recognizeHandGesture();
     else if( isNum ) AddValue( name );
     else AddCommand( name );
 }

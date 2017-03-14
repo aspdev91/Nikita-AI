@@ -1,4 +1,4 @@
-function FaceEmotionRecog()
+function faceEmotionRecog()
 {
     cam.TakePicture('/storage/emulated/0/emotion_pic.jpg'); 
     setTimeout(ProcessImage,2000);
@@ -47,7 +47,7 @@ function HandleReply( httpRequest )
 } 
 
 function FaceEmotionEngine(result){
-    console.log('result',result)
+    console.log('result',result.toString())
     emotionScores = result[0]["scores"]
     let {anger, contempt, disgust, fear, happiness, neutral, sadness, surprise} = emotionScores;
 
