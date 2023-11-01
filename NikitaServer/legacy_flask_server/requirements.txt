@@ -1,3 +1,4 @@
 Flask==0.12.3
 textblob==0.11.1
 vaderSentiment==0.5
+werkzeug>=3.0.1 # not directly required, pinned by Snyk to avoid a vulnerability
